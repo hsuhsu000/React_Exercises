@@ -20,7 +20,7 @@ const fruits = [
     description: "fresh banana from myanmar",
   },
 ];
-const Cart = () => {
+const Cart = (props) => {
   return (
     <section className="cart-box">
       <h2>Carts</h2>
@@ -33,7 +33,7 @@ const Cart = () => {
         <h4>$3000</h4>
       </div>
       <div className="text-end mt-3">
-        <button className="btn btn-dark me-2">Close</button>
+        <button className="btn btn-dark me-2" onClick={props.hideCartHandler}>Close</button>
         <button className="btn btn-warning">Order</button>
       </div>
     </section>

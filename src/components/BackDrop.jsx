@@ -1,11 +1,15 @@
 import React from "react";
 import Cart from "./Cart";
 
-const BackDrop = () => {
+const BackDrop = (props) => {
   return (
-    <div className="backdrop">
-      <Cart></Cart>
-    </div>
+    <>
+      {props.showCart && (
+        <section className="backdrop" onClick={props.hideCartHandler}>
+          <Cart hideCartHandler={props.hideCartHandler}></Cart>
+        </section>
+      )}
+    </>
   );
 };
 
