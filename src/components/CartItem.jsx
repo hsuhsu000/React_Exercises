@@ -10,7 +10,7 @@ const CartItem = ({ fruit }) => {
       </div>
       <div className="card-body d-flex justify-content-end">
         <div>
-          <p className="badge bg-dark me-2">x 1</p>
+          <p className="badge bg-dark me-2">x {fruit.amount}</p>
         </div>
         <div>
           <button className="btn btn-sm btn-warning me-1">+</button>

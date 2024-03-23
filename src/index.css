@@ -22,13 +22,18 @@ code {
 }
 
 .cart-box {
+  width: 800px;
   background-color: white;
+  border-radius: 20px;
   padding: 30px 30px;
   z-index: 1000;
-  position: relative;
+  position: fixed;
+  top: 40vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .cart {
   /* background-color: red; */
-  width: 500px;
+  /* width: 600px; */
 }

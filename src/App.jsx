@@ -1,11 +1,11 @@
 import React from "react";
 import Main from "./layout/Main";
-
+import ItemContextProvider from "./store/itemContext";
 const App = () => {
   return (
-    <section className="">
+    <ItemContextProvider>
       <Main></Main>
-    </section>
+    </ItemContextProvider>
   );
 };
 
