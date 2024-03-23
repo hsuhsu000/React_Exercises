@@ -7,15 +7,17 @@ const Cart = (props) => {
   return (
     <section className="cart-box">
       <h2>Carts</h2>
-      {items.length < 1 ? (
-        <h4 className="text-danger text-center">Your cart is empty.</h4>
-      ) : (
-        <>
-          {items.map((fruit) => (
-            <CartItem key={fruit.id} fruit={fruit}></CartItem>
-          ))}
-        </>
-      )}
+      <section className="overflow-ctr">
+        {items.length < 1 ? (
+          <h4 className="text-danger text-center">Your cart is empty.</h4>
+        ) : (
+          <>
+            {items.map((fruit) => (
+              <CartItem key={fruit.id} fruit={fruit}></CartItem>
+            ))}
+          </>
+        )}
+      </section>
 
       <hr></hr>
       <div className="d-flex justify-content-between">
@@ -30,7 +32,14 @@ const Cart = (props) => {
           <></>
         ) : (
           <>
-            <button className="btn btn-warning">Order</button>
+            <button
+              className="btn btn-warning"
+              onClick={() => {
+                alert("Ordered!");
+              }}
+            >
+              Order
+            </button>
           </>
         )}
       </div>

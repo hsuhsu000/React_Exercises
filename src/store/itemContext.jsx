@@ -9,11 +9,43 @@ const intialState = {
 //Reducer
 const itemReducer = (state, action) => {
   if (action.type === "ADD_ITEM") {
-    const updatedItems = state.items.concat(action.item);
     const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;
+
+    const existItemIndex = state.items.findIndex((item) => item.id === action.item.id);
+    const existItem = state.items[existItemIndex];
+    let updateItems;
+    if (existItem) {
+      const updateItem = {
+        ...existItem,
+        amount: existItem.amount + action.item.amount,
+      };
+      updateItems = [...state.items];
+      updateItems[existItemIndex] = updateItem;
+    } else {
+      updateItems = state.items.concat(action.item);
+    }
+
     return {
-      items: updatedItems,
+      items: updateItems,
       totalAmount: updatedTotalAmount,
+    };
+  }
+  if (action.type === "REMOVE_ITEM") {
+    const existItemIndex = state.items.findIndex((item) => item.id === action.id);
+    const existItem = state.items[existItemIndex];
+    const updateTotalAmount = state.totalAmount - existItem.price;
+
+    let updateItems;
+    if (existItem.amount === 1) {
+      updateItems = state.items.filter((item) => item.id !== action.id);
+    } else {
+      const updateItem = { ...existItem, amount: existItem.amount - 1 };
+      updateItems = [...state.items];
+      updateItems[existItemIndex] = updateItem;
+    }
+    return {
+      items: updateItems,
+      totalAmount: updateTotalAmount,
     };
   }
   return intialState;
